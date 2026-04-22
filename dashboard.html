@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogAnalyzer Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="header">
+            <div class="header-glow"></div>
+            <h1>LogAnalyzer <span>Pulse</span></h1>
+            <p>Real-time threat detection and malicious IP monitoring</p>
+        </header>
+
+        <main class="main-content">
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <h2>Top Malicious IPs</h2>
+                    <span class="badge">Live Data</span>
+                </div>
+                
+                <div id="chart-container" class="chart-container">
+                    <!-- Bars injected here via JS -->
+                    <div class="loading-state">Analyzing server logs...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
