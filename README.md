@@ -8,21 +8,21 @@ Features:
 
 The major design decisions were focused on performance, scalability, and separation of concerns between backend processing and frontend visualization.
 
-Multithreaded processing:
+1. Multithreaded processing:
 The log file is divided into chunks based on CPU cores, allowing parallel processing using Windows threads (CreateThread) to significantly improve performance on large datasets.
-Efficient log parsing:
+2. Efficient log parsing:
 Each thread independently parses its portion of the file and extracts IP addresses and HTTP status codes, ensuring minimal contention.
-Thread-safe aggregation:
+3. Thread-safe aggregation:
 A CRITICAL_SECTION lock is used only during the final merge step to prevent race conditions while keeping synchronization overhead low.
-Local aggregation per thread:
+4. Local aggregation per thread:
 Each thread maintains a local hash map (unordered_map) before merging, reducing global locking and improving scalability.
-Dynamic workload distribution:
+5. Dynamic workload distribution:
 File size is divided into equal chunks using streampos, allowing the system to scale with system hardware.
-JSON output for interoperability:
+6. JSON output for interoperability:
 Results are written to results.json, enabling easy integration with the frontend dashboard.
-Interactive dashboard visualization:
+7. Interactive dashboard visualization:
 A web UI displays the top malicious IPs using animated bars, providing a clear and intuitive view of the results.
-Test data generation:
+8. Test data generation:
 A Python script generates realistic log files with controlled malicious IP behavior to simulate real-world conditions.
-Separation of concerns:
+9. Separation of concerns:
 Backend handles computation, while frontend handles visualization, making the system modular and easier to extend.
